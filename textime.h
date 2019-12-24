@@ -33,11 +33,242 @@ public:
   virtual cl_Lst<TextTimePixel> getPixelsFromLetter(char c) = 0;
 };
 
-class TextTimeFr: public TextTime
+class TextTimeCH: public TextTime
 {
 
 public:
-  TextTimeFr()
+
+  TextTimeCH()
+  {
+    _it.number = 2;
+    _it.pixels[0].row = 0; _it.pixels[0].col = 0; // E
+    _it.pixels[1].row = 0; _it.pixels[1].col = 1; // S
+
+    _is.number = 4;
+    _is.pixels[0].row = 0; _is.pixels[0].col = 3; // I
+    _is.pixels[1].row = 0; _is.pixels[1].col = 4; // S
+    _is.pixels[2].row = 0; _is.pixels[2].col = 5; // C
+    _is.pixels[3].row = 0; _is.pixels[3].col = 6; // H
+ 
+    _hours[0].number = 6;
+    _hours[0].pixels[0].row = 10; _hours[0].pixels[0].col = 0;  // Z
+    _hours[0].pixels[1].row = 10; _hours[0].pixels[1].col = 1;  // W
+    _hours[0].pixels[2].row = 10; _hours[0].pixels[2].col = 2;  // Ö
+    _hours[0].pixels[3].row = 10; _hours[0].pixels[3].col = 3;  // U
+    _hours[0].pixels[4].row = 10; _hours[0].pixels[4].col = 4;  // F
+    _hours[0].pixels[5].row = 10; _hours[0].pixels[5].col = 5;  // I
+
+    _hours[1].number = 3;
+    _hours[1].pixels[0].row = 4; _hours[1].pixels[0].col = 0;  // E
+    _hours[1].pixels[1].row = 4; _hours[1].pixels[1].col = 1;  // I
+    _hours[1].pixels[2].row = 4; _hours[1].pixels[2].col = 2;  // S
+
+    _hours[2].number = 4;
+    _hours[2].pixels[0].row = 4; _hours[2].pixels[0].col = 4;  // Z
+    _hours[2].pixels[1].row = 4; _hours[2].pixels[1].col = 5;  // W
+    _hours[2].pixels[2].row = 4; _hours[2].pixels[2].col = 6;  // Ö
+    _hours[2].pixels[3].row = 4; _hours[2].pixels[3].col = 7;  // I
+
+    _hours[3].number = 3;
+    _hours[3].pixels[0].row = 4; _hours[3].pixels[0].col = 9;   // D
+    _hours[3].pixels[1].row = 4; _hours[3].pixels[1].col = 10;  // R
+    _hours[3].pixels[2].row = 4; _hours[3].pixels[2].col = 11;  // Ü
+    
+    _hours[4].number = 5;
+    _hours[4].pixels[0].row = 5; _hours[4].pixels[0].col = 0;  // V
+    _hours[4].pixels[1].row = 5; _hours[4].pixels[1].col = 1;  // I
+    _hours[4].pixels[2].row = 5; _hours[4].pixels[2].col = 2;  // E
+    _hours[4].pixels[3].row = 5; _hours[4].pixels[3].col = 3;  // R
+    _hours[4].pixels[4].row = 5; _hours[4].pixels[4].col = 4;  // I
+
+    _hours[5].number = 4;
+    _hours[5].pixels[0].row = 5; _hours[5].pixels[0].col = 6;  // F
+    _hours[5].pixels[1].row = 5; _hours[5].pixels[1].col = 7;  // Ü
+    _hours[5].pixels[2].row = 5; _hours[5].pixels[2].col = 8;  // F
+    _hours[5].pixels[3].row = 5; _hours[5].pixels[3].col = 9;  // I
+
+    _hours[6].number = 6;
+    _hours[6].pixels[0].row = 6; _hours[6].pixels[0].col = 0;  // S
+    _hours[6].pixels[1].row = 6; _hours[6].pixels[1].col = 1;  // Ä
+    _hours[6].pixels[2].row = 6; _hours[6].pixels[2].col = 2;  // C
+    _hours[6].pixels[3].row = 6; _hours[6].pixels[3].col = 3;  // H
+    _hours[6].pixels[4].row = 6; _hours[6].pixels[4].col = 4;  // S
+    _hours[6].pixels[5].row = 6; _hours[6].pixels[5].col = 5;  // I
+
+
+    _hours[7].number = 5;
+    _hours[7].pixels[0].row = 6; _hours[7].pixels[0].col = 7;  // S
+    _hours[7].pixels[1].row = 6; _hours[7].pixels[1].col = 8;  // I
+    _hours[7].pixels[2].row = 6; _hours[7].pixels[2].col = 9;  // B
+    _hours[7].pixels[3].row = 6; _hours[7].pixels[3].col = 10; // N
+    _hours[7].pixels[4].row = 6; _hours[7].pixels[4].col = 11; // I
+
+    _hours[8].number = 5;
+    _hours[8].pixels[0].row = 7; _hours[8].pixels[0].col = 0;  // A
+    _hours[8].pixels[1].row = 7; _hours[8].pixels[1].col = 1;  // C
+    _hours[8].pixels[2].row = 7; _hours[8].pixels[2].col = 2;  // H
+    _hours[8].pixels[3].row = 7; _hours[8].pixels[3].col = 3;  // T
+    _hours[8].pixels[4].row = 7; _hours[8].pixels[4].col = 4;  // I
+
+    _hours[9].number = 4;
+    _hours[9].pixels[0].row = 7; _hours[9].pixels[0].col = 6;  // N
+    _hours[9].pixels[1].row = 7; _hours[9].pixels[1].col = 7;  // Ü
+    _hours[9].pixels[2].row = 7; _hours[9].pixels[2].col = 8;  // N
+    _hours[9].pixels[3].row = 7; _hours[9].pixels[3].col = 9;  // I
+
+    _hours[10].number = 5;
+    _hours[10].pixels[0].row = 8; _hours[10].pixels[0].col = 0;  // Z
+    _hours[10].pixels[1].row = 8; _hours[10].pixels[1].col = 1;  // Ä
+    _hours[10].pixels[2].row = 8; _hours[10].pixels[2].col = 2;  // H
+    _hours[10].pixels[3].row = 8; _hours[10].pixels[3].col = 3;  // N
+    _hours[10].pixels[4].row = 8; _hours[10].pixels[4].col = 4;  // I
+    
+
+    _hours[11].number = 4;
+    _hours[11].pixels[0].row = 8; _hours[11].pixels[0].col = 6;  // Ö
+    _hours[11].pixels[1].row = 8; _hours[11].pixels[1].col = 7;  // U
+    _hours[11].pixels[2].row = 8; _hours[11].pixels[2].col = 8;  // F
+    _hours[11].pixels[3].row = 8; _hours[11].pixels[3].col = 9;  // I
+
+    _hours[12].number = 6;
+    _hours[12].pixels[0].row = 9; _hours[12].pixels[0].col = 0;  // Z
+    _hours[12].pixels[1].row = 9; _hours[12].pixels[1].col = 1;  // W
+    _hours[12].pixels[2].row = 9; _hours[12].pixels[2].col = 2;  // Ö
+    _hours[12].pixels[3].row = 9; _hours[12].pixels[3].col = 3;  // U
+    _hours[12].pixels[4].row = 9; _hours[12].pixels[4].col = 4;  // F
+    _hours[12].pixels[5].row = 9; _hours[12].pixels[5].col = 5;  // I
+
+    _hour1.number = 5;
+    _hour1.pixels[0].row = 5; _hour1.pixels[0].col = 5;  // H
+    _hour1.pixels[1].row = 5; _hour1.pixels[1].col = 6;  // E
+    _hour1.pixels[2].row = 5; _hour1.pixels[2].col = 7;  // U
+    _hour1.pixels[3].row = 5; _hour1.pixels[3].col = 8;  // R
+    _hour1.pixels[4].row = 5; _hour1.pixels[4].col = 9;  // E
+ 
+    _hour2.number = 6;
+    _hour2.pixels[0].row = 5; _hour2.pixels[0].col = 5;  // H
+    _hour2.pixels[1].row = 5; _hour2.pixels[1].col = 6;  // E
+    _hour2.pixels[2].row = 5; _hour2.pixels[2].col = 7;  // U
+    _hour2.pixels[3].row = 5; _hour2.pixels[3].col = 8;  // R
+    _hour2.pixels[4].row = 5; _hour2.pixels[4].col = 9;  // E
+    _hour2.pixels[5].row = 5; _hour2.pixels[5].col = 10; // S
+
+    _minutes[0].number = 0; // between [0:4]
+
+    _minutes[1].number = 5; // between [5:9]
+    _minutes[1].pixels[0].row = 0; _minutes[1].pixels[0].col = 9;  // F
+    _minutes[1].pixels[1].row = 0; _minutes[1].pixels[1].col = 10; // Ü
+    _minutes[1].pixels[2].row = 0; _minutes[1].pixels[2].col = 11; // F
+    _minutes[1].pixels[3].row = 3; _minutes[1].pixels[3].col = 0;  // A
+    _minutes[1].pixels[4].row = 3; _minutes[1].pixels[4].col = 1;  // B
+
+    _minutes[2].number = 5; // between [10:14]
+    _minutes[2].pixels[0].row = 1; _minutes[2].pixels[0].col = 9;  // Z
+    _minutes[2].pixels[1].row = 1; _minutes[2].pixels[1].col = 10; // Ä
+    _minutes[2].pixels[2].row = 1; _minutes[2].pixels[2].col = 11; // Ä
+    _minutes[2].pixels[3].row = 3; _minutes[2].pixels[3].col = 0;  // A
+    _minutes[2].pixels[4].row = 3; _minutes[2].pixels[4].col = 1;  // B
+
+    _minutes[3].number = 8; // between [15:19]
+    _minutes[3].pixels[0].row = 1; _minutes[3].pixels[0].col = 0;  // V
+    _minutes[3].pixels[1].row = 1; _minutes[3].pixels[1].col = 1;  // I
+    _minutes[3].pixels[2].row = 1; _minutes[3].pixels[2].col = 2;  // E
+    _minutes[3].pixels[3].row = 1; _minutes[3].pixels[3].col = 3;  // R
+    _minutes[3].pixels[4].row = 1; _minutes[3].pixels[4].col = 4;  // T
+    _minutes[3].pixels[5].row = 1; _minutes[3].pixels[5].col = 5;  // U
+    _minutes[3].pixels[6].row = 3; _minutes[3].pixels[6].col = 0;  // A
+    _minutes[3].pixels[7].row = 3; _minutes[3].pixels[7].col = 1;  // B
+
+    _minutes[4].number = 8; // between [20:24]
+    _minutes[4].pixels[0].row = 2; _minutes[4].pixels[0].col = 0;  // Z
+    _minutes[4].pixels[1].row = 2; _minutes[4].pixels[1].col = 1;  // W
+    _minutes[4].pixels[2].row = 2; _minutes[4].pixels[2].col = 2;  // Ä
+    _minutes[4].pixels[3].row = 2; _minutes[4].pixels[3].col = 3;  // N
+    _minutes[4].pixels[4].row = 2; _minutes[4].pixels[4].col = 4;  // Z
+    _minutes[4].pixels[5].row = 2; _minutes[4].pixels[5].col = 5;  // G
+    _minutes[4].pixels[6].row = 3; _minutes[4].pixels[6].col = 0;  // A
+    _minutes[4].pixels[7].row = 3; _minutes[4].pixels[7].col = 1;  // B
+
+    _minutes[5].number = 11;// between [25:29]
+    _minutes[5].pixels[0].row = 0; _minutes[5].pixels[0].col = 9;  // F
+    _minutes[5].pixels[1].row = 0; _minutes[5].pixels[1].col = 10; // Ü
+    _minutes[5].pixels[2].row = 0; _minutes[5].pixels[2].col = 11; // F
+    _minutes[5].pixels[3].row = 2; _minutes[5].pixels[3].col = 9;  // V
+    _minutes[5].pixels[4].row = 2; _minutes[5].pixels[4].col = 10; // O
+    _minutes[5].pixels[5].row = 2; _minutes[5].pixels[5].col = 11; // R
+    _minutes[5].pixels[6].row = 3; _minutes[5].pixels[6].col = 3;  // H
+    _minutes[5].pixels[7].row = 3; _minutes[5].pixels[7].col = 4;  // A
+    _minutes[5].pixels[8].row = 3; _minutes[5].pixels[8].col = 5;  // U
+    _minutes[5].pixels[9].row = 3; _minutes[5].pixels[9].col = 6;  // B
+    _minutes[5].pixels[10].row = 3; _minutes[5].pixels[10].col = 7;// I
+
+    _minutes[6].number = 5; // between [30:34]
+    _minutes[6].pixels[0].row = 3; _minutes[6].pixels[0].col = 3;  // H
+    _minutes[6].pixels[1].row = 3; _minutes[6].pixels[1].col = 4;  // A
+    _minutes[6].pixels[2].row = 3; _minutes[6].pixels[2].col = 5;  // U
+    _minutes[6].pixels[3].row = 3; _minutes[6].pixels[3].col = 6;  // B
+    _minutes[6].pixels[4].row = 3; _minutes[6].pixels[4].col = 7;  // I
+    
+    _minutes[7].number = 10; // between [35:39]
+    _minutes[7].pixels[0].row = 0; _minutes[7].pixels[0].col = 9;  // F
+    _minutes[7].pixels[1].row = 0; _minutes[7].pixels[1].col = 10; // Ü
+    _minutes[7].pixels[2].row = 0; _minutes[7].pixels[2].col = 11; // F
+    _minutes[7].pixels[3].row = 2; _minutes[7].pixels[3].col = 6;  // A
+    _minutes[7].pixels[4].row = 2; _minutes[7].pixels[4].col = 7;  // B
+    _minutes[7].pixels[5].row = 3; _minutes[7].pixels[5].col = 3;  // H
+    _minutes[7].pixels[6].row = 3; _minutes[7].pixels[6].col = 4;  // A
+    _minutes[7].pixels[7].row = 3; _minutes[7].pixels[7].col = 5;  // U
+    _minutes[7].pixels[8].row = 3; _minutes[7].pixels[8].col = 6;  // B
+    _minutes[7].pixels[9].row = 3; _minutes[7].pixels[9].col = 7;  // I
+
+    _minutes[8].number = 9; // between [40:44]
+    _minutes[8].pixels[0].row = 2; _minutes[8].pixels[0].col = 0;  // Z
+    _minutes[8].pixels[1].row = 2; _minutes[8].pixels[1].col = 1;  // W
+    _minutes[8].pixels[2].row = 2; _minutes[8].pixels[2].col = 2;  // Ä
+    _minutes[8].pixels[3].row = 2; _minutes[8].pixels[3].col = 3;  // N
+    _minutes[8].pixels[4].row = 2; _minutes[8].pixels[4].col = 4;  // Z
+    _minutes[8].pixels[5].row = 2; _minutes[8].pixels[5].col = 5;  // G
+    _minutes[8].pixels[6].row = 2; _minutes[8].pixels[6].col = 9;  // V
+    _minutes[8].pixels[7].row = 2; _minutes[8].pixels[7].col = 10; // O
+    _minutes[8].pixels[8].row = 2; _minutes[8].pixels[8].col = 11; // R
+
+    _minutes[9].number = 9; // between [45:49]
+    _minutes[9].pixels[0].row = 1; _minutes[9].pixels[0].col = 0;  // V
+    _minutes[9].pixels[1].row = 1; _minutes[9].pixels[1].col = 1;  // I
+    _minutes[9].pixels[2].row = 1; _minutes[9].pixels[2].col = 2;  // E
+    _minutes[9].pixels[3].row = 1; _minutes[9].pixels[3].col = 3;  // R
+    _minutes[9].pixels[4].row = 1; _minutes[9].pixels[4].col = 4;  // T
+    _minutes[9].pixels[5].row = 1; _minutes[9].pixels[5].col = 5;  // U
+    _minutes[9].pixels[6].row = 2; _minutes[9].pixels[6].col = 9;  // V
+    _minutes[9].pixels[7].row = 2; _minutes[9].pixels[7].col = 10; // O
+    _minutes[9].pixels[8].row = 2; _minutes[9].pixels[8].col = 11; // R
+
+    _minutes[10].number = 6; // between [50:54]
+    _minutes[10].pixels[0].row = 1; _minutes[10].pixels[0].col = 9;  // Z
+    _minutes[10].pixels[1].row = 1; _minutes[10].pixels[1].col = 10; // Ä
+    _minutes[10].pixels[2].row = 1; _minutes[10].pixels[2].col = 11; // Ä
+    _minutes[10].pixels[3].row = 2; _minutes[10].pixels[3].col = 9;  // V
+    _minutes[10].pixels[4].row = 2; _minutes[10].pixels[4].col = 10; // O
+    _minutes[10].pixels[5].row = 2; _minutes[10].pixels[5].col = 11; // R
+
+    _minutes[11].number = 6; // between [55:59]
+    _minutes[11].pixels[0].row = 0; _minutes[11].pixels[0].col = 9;  // F
+    _minutes[11].pixels[1].row = 0; _minutes[11].pixels[1].col = 10; // ü
+    _minutes[11].pixels[2].row = 0; _minutes[11].pixels[2].col = 11; // F
+    _minutes[11].pixels[3].row = 2; _minutes[11].pixels[3].col = 9;  // V
+    _minutes[11].pixels[4].row = 2; _minutes[11].pixels[4].col = 10; // O
+    _minutes[11].pixels[5].row = 2; _minutes[11].pixels[5].col = 11; // R
+
+    _minutes[12].number = 6; // between [30:34] (special for midday and midnight)
+    _minutes[12].pixels[0].row = 9; _minutes[12].pixels[0].col = 0;  // Z
+    _minutes[12].pixels[1].row = 9; _minutes[12].pixels[1].col = 1;  // W
+    _minutes[12].pixels[2].row = 9; _minutes[12].pixels[2].col = 3;  // Ö
+    _minutes[12].pixels[3].row = 9; _minutes[12].pixels[3].col = 4;  // U
+    _minutes[12].pixels[4].row = 9; _minutes[12].pixels[4].col = 5;  // F
+    _minutes[12].pixels[5].row = 9; _minutes[12].pixels[5].col = 6;  // I
+  }
+
+  /*TextTimeFr()
   {
     _it.number = 2;
     _it.pixels[0].row = 0; _it.pixels[0].col = 0; // I
@@ -264,7 +495,8 @@ public:
     _minutes[12].pixels[3].row = 9; _minutes[12].pixels[3].col = 4;  // E
     _minutes[12].pixels[4].row = 9; _minutes[12].pixels[4].col = 5;  // M
     _minutes[12].pixels[5].row = 9; _minutes[12].pixels[5].col = 6;  // I
-  }
+  }*/
+
 
   virtual TextTimeBlobs getBlobsFromTime(int hour, int minute)
   {
@@ -278,16 +510,17 @@ public:
     b.blobs[b.number++] = &_it;
     b.blobs[b.number++] = &_is;
 
-    if (minute >= 35)
+    if (minute >= 25)
       hour = hour + 1;
     if (hour > 23) hour = 0;
 
     b.blobs[b.number++] = (hour == 12) ? &(_hours[12]) : &(_hours[hour % 12]);
 
     if (hour != 0 && hour != 12)
-      b.blobs[b.number++] = (hour == 1 || hour == 13) ? &_hour1 : &_hour2;
+      //b.blobs[b.number++] = (hour == 1 || hour == 13) ? &_hour1 : &_hour2;
 
-    b.blobs[b.number++] = ((hour == 0 || hour == 12) && (minute / 5 == 6)) ? &(_minutes[12]) : &(_minutes[minute / 5]);
+      //b.blobs[b.number++] = ((hour == 0 || hour == 12) && (minute / 5 == 6)) ? &(_minutes[12]) : &(_minutes[minute / 5]);
+      b.blobs[b.number++] = &(_minutes[minute / 5]);
 
     return b;
   }

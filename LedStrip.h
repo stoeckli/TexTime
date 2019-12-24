@@ -6,7 +6,7 @@
 #include "textime.h"
 
 #define NROW 10
-#define NCOL 11
+#define NCOL 12
 #define NEDGE 4
 
 #define pVOID  Pixel()
@@ -16,7 +16,7 @@
 #define pBLUE  Pixel(RgbColor(0  , 0  , 255))
 #define pWHITE Pixel(RgbColor(255, 255, 255))
 
-typedef NeoPixelBrightnessBus<NeoGrbFeature, NeoEsp8266AsyncUart1Ws2813Method> MyNeoPixelBrightnessBus;
+typedef NeoPixelBrightnessBus<NeoGrbFeature, NeoEsp8266AsyncUart1Ws2812Method> MyNeoPixelBrightnessBus;
 
 
 class Pixel
@@ -108,18 +108,18 @@ public:
 class LedConfiguration40x40 : public LedConfiguration {
 private:
   const uint8_t _matchingPixelsMatrix[NROW][NCOL][1] = {
-    { { 0  }, { 1  }, { 5  }, { 6  }, { 14 }, { 15 }, { 27 }, { 28  }, { 44  }, { 45  }, { 64  } },
-    { { 2  }, { 4  }, { 7  }, { 13 }, { 16 }, { 26 }, { 29 }, { 43  }, { 46  }, { 63  }, { 65  } },
-    { { 3  }, { 8  }, { 12 }, { 17 }, { 25 }, { 30 }, { 42 }, { 47  }, { 62  }, { 66  }, { 81  } },
-    { { 9  }, { 11 }, { 18 }, { 24 }, { 31 }, { 41 }, { 48 }, { 61  }, { 67  }, { 80  }, { 82  } },
-    { { 10 }, { 19 }, { 23 }, { 32 }, { 40 }, { 49 }, { 60 }, { 68  }, { 79  }, { 83  }, { 94  } },
-    { { 20 }, { 22 }, { 33 }, { 39 }, { 50 }, { 59 }, { 69 }, { 78  }, { 84  }, { 93  }, { 95  } },
-    { { 21 }, { 34 }, { 38 }, { 51 }, { 58 }, { 70 }, { 77 }, { 85  }, { 92  }, { 96  }, { 103 } },
-    { { 35 }, { 37 }, { 52 }, { 57 }, { 71 }, { 76 }, { 86 }, { 91  }, { 97  }, { 102 }, { 104 } },
-    { { 36 }, { 53 }, { 56 }, { 72 }, { 75 }, { 87 }, { 90 }, { 98  }, { 101 }, { 105 }, { 108 } },
-    { { 54 }, { 55 }, { 73 }, { 74 }, { 88 }, { 89 }, { 99 }, { 100 }, { 106 }, { 107 }, { 109 } }
+    { { 12 }, { 13 }, { 14 }, { 15 }, { 16 }, { 17 }, { 18 }, { 19 }, { 20 }, { 21 }, { 22 }, { 23} },
+    { { 35 }, { 34 }, { 33 }, { 32 }, { 31 }, { 30 }, { 29 }, { 28 }, { 27 }, { 26 }, { 25 }, { 24} },
+    { { 36 }, { 37 }, { 38 }, { 39 }, { 40 }, { 41 }, { 42 }, { 43 }, { 44 }, { 45 }, { 46 }, { 47} },
+    { { 59 }, { 58 }, { 57 }, { 56 }, { 55 }, { 54 }, { 53 }, { 52 }, { 51 }, { 50 }, { 49 }, { 48} },
+    { { 60 }, { 61 }, { 62 }, { 63 }, { 64 }, { 65 }, { 66 }, { 67 }, { 68 }, { 69 }, { 70 }, { 71} },
+    { { 83 }, { 82 }, { 81 }, { 80 }, { 79 }, { 78 }, { 77 }, { 76 }, { 75 }, { 74 }, { 73 }, { 72} },
+    { { 84 }, { 85 }, { 86 }, { 87 }, { 88 }, { 89 }, { 90 }, { 91 }, { 92 }, { 93 }, { 94 }, { 95} },
+    { {107 }, {106 }, {105 }, {104 }, {103 }, {102 }, {101 }, {100 }, { 99 }, { 98 }, { 97 }, { 96} },
+    { {108 }, {109 }, {110 }, {111 }, {112 }, {113 }, {114 }, {115 }, {116 }, {117 }, {118 }, {119} },
+    { {131 }, {130 }, {129 }, {128 }, {127 }, {126 }, {125 }, {124 }, {123 }, {122 }, {121 }, {120} }
   };
-  const uint8_t _matchingPixelsEdge[NEDGE][1] = { { 112 }, { 111 }, { 110 }, { 113 } };
+  const uint8_t _matchingPixelsEdge[NEDGE][1] = { { 11 }, {  0 }, { 132 }, { 143 } };
 
 public:
   virtual String getName()
@@ -139,7 +139,9 @@ public:
 
   int ledsNumber()
   {
-    return (NROW * NCOL) + NEDGE;
+    //MSt return (NROW * NCOL) + NEDGE;
+    return 144; //MSt
+  
   }
 
   const uint8_t *getLedsMatrixId(int row, int col)
@@ -407,7 +409,7 @@ public:
 class LedStripModeTime : public LedStripMode
 {
 private:
-  TextTimeFr _textime;
+  TextTimeCH _textime;
   int _m;
   int _h;
 
