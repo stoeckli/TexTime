@@ -1,11 +1,3 @@
-/**
-* Ce programme permet de tester l'utilisation du module lux-mètre d'Adafruit.
-* le module : http://www.adafruit.com/products/1384
-* le datasheet du module : http://www.adafruit.com/datasheets/GA1A1S202WP_Spec.pdf
-* Code source sous licence GNU GPL 2.0.
-* Ce fichier fait partie du projet Milapli : https://github.com/sarinkhan/Milapli
-*/
-
 #define ALS_PIN A0
 #define ALS_AVG_SIZE 50
 
@@ -43,6 +35,6 @@ void handleAmbientLightSensor()
   pt = ct;
 
   yield();
-  updateAvgLux(analogRead(ALS_PIN) * 0.6979 - 14.6); // Theoretical value 0,685333
+  //updateAvgLux(lightMeter.readLightLevel());
   yield();
 }

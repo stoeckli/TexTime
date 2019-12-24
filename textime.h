@@ -1,4 +1,4 @@
-#define TEXTIMEMAXBLOBSIZE 16
+#define TEXTIMEMAXBLOBSIZE 24
 
 struct TextTimePixel
 {
@@ -513,14 +513,16 @@ public:
     if (minute >= 25)
       hour = hour + 1;
     if (hour > 23) hour = 0;
-
+    
     b.blobs[b.number++] = (hour == 12) ? &(_hours[12]) : &(_hours[hour % 12]);
 
-    if (hour != 0 && hour != 12)
+    b.blobs[b.number++] = &(_minutes[minute / 5]);
+    
+    //if (hour != 0 && hour != 12)
       //b.blobs[b.number++] = (hour == 1 || hour == 13) ? &_hour1 : &_hour2;
 
       //b.blobs[b.number++] = ((hour == 0 || hour == 12) && (minute / 5 == 6)) ? &(_minutes[12]) : &(_minutes[minute / 5]);
-      b.blobs[b.number++] = &(_minutes[minute / 5]);
+    
 
     return b;
   }

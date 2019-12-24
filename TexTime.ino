@@ -33,6 +33,7 @@
 #include "LightSensor.h"
 #include "LedStrip.h"
 #include "mqtt.h"
+#include <BH1750.h> 
 
 // Include the HTML, STYLE and Script "Pages"
 
@@ -46,7 +47,9 @@
 #include "Page_script.js.h"
 #include "Page_style.css.h"
 
-
+// - BH1750 - 
+BH1750 lightMeter;
+__int32_t nextTime;
 
 extern "C" {
 #include "user_interface.h"
@@ -275,7 +278,11 @@ void setup() {
 
   Serial.println("Ready");
 
-
+  // start light Sensor
+  Wire.begin(D2, D1);                       // (SDA,SCL) 
+  lightMeter.begin();
+  nextTime = millis() + 10000;
+  
   //**** Normal Sketch code here...
 
 
@@ -299,9 +306,6 @@ void loop() {
   // Update time
   handleISRsecondTick();
 
-  // Read current light value
-  handleAmbientLightSensor();
-
   // OTA request handling
   ArduinoOTA.handle();
 
@@ -315,6 +319,16 @@ void loop() {
   mqttReconnect();
   _mqtt.loop();
   mqttPollingPublisher();
+
+  // Read current light value every 100 ms
+  //handleAmbientLightSensor();
+  if (millis() > nextTime) {
+    int tempLux;
+    tempLux = (lightMeter.readLightLevel());
+    updateAvgLux(tempLux);
+    Serial.println(tempLux);
+    nextTime = millis() + 1000;
+  }
 
   // Handle led display
   QTLed.handle();
